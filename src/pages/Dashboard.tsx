@@ -1,5 +1,12 @@
+import { CardList, TransactionTable } from "components/dashboard";
+
 const Dashboard: React.FC = () => {
-  return null;
+  return (
+    <>
+      <CardList />
+      <TransactionTable />
+    </>
+  );
 };
 
 export default Dashboard;
