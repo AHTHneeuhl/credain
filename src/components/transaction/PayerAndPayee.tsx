@@ -1,3 +1,5 @@
+import { Typography } from "components/common";
+
 type TProps = {
   payer: string;
   payee: string;
@@ -6,13 +8,29 @@ type TProps = {
 const PayerAndPayee: React.FC<TProps> = ({ payer, payee }) => {
   return (
     <div className="flex flex-row items-center gap-6 p-4">
-      <div>
-        <h2 className="font-medium">Payer</h2>
-        <p className="text-neutral-700">{payer}</p>
+      <div className="flex flex-col items-center justify-center bg-green-100 p-4 rounded">
+        <Typography
+          fontSize="md"
+          fontWeight="semibold"
+          className="text-green-800"
+        >
+          Payer
+        </Typography>
+        <Typography fontWeight="semibold" className="text-green-700">
+          {payer}
+        </Typography>
       </div>
-      <div>
-        <h2 className="font-medium">Payee</h2>
-        <p className="text-neutral-700">{payee}</p>
+      <div className="flex flex-col items-center justify-center bg-green-100 p-4 rounded">
+        <Typography
+          fontSize="md"
+          fontWeight="semibold"
+          className="text-green-800"
+        >
+          Payee
+        </Typography>
+        <Typography fontWeight="semibold" className="text-green-700">
+          {payee}
+        </Typography>
       </div>
     </div>
   );

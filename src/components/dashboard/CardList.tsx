@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const CardList: React.FC = () => {
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center justify-between gap-12">
       {cards.map(({ id, title, subtitle, value, currency }) => {
         return (
           <Card
