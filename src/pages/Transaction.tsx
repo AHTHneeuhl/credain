@@ -1,3 +1,4 @@
+import { Typography } from "components/common";
 import {
   PayerAndPayee,
   InvoiceAndDate,
@@ -16,16 +17,27 @@ const Transaction: React.FC = () => {
 
   return (
     <>
-      <InvoiceAndDate
-        invoiceNumber={transaction?.invoiceNumber!}
-        transactionDate={transaction?.transactionDate!}
-      />
-      <PayerAndPayee payer={transaction?.payer!} payee={transaction?.payee!} />
-      <AmountEquivalent
-        amount={transaction?.amount!}
-        usdEquivalent={transaction?.usdEquivalent!}
-      />
-      <Status status={transaction?.status!} />
+      <Typography
+        fontWeight="semibold"
+        className="text-center text-3xl text-neutral-800 mb-6"
+      >
+        Transaction Details ({transaction?.id!})
+      </Typography>
+      <div className="h-[64vh] bg-teal-300/75 rounded-md flex flex-col justify-between gap-4 p-6">
+        <InvoiceAndDate
+          invoiceNumber={transaction?.invoiceNumber!}
+          transactionDate={transaction?.transactionDate!}
+        />
+        <PayerAndPayee
+          payer={transaction?.payer!}
+          payee={transaction?.payee!}
+        />
+        <AmountEquivalent
+          amount={transaction?.amount!}
+          usdEquivalent={transaction?.usdEquivalent!}
+        />
+        <Status status={transaction?.status!} />
+      </div>
     </>
   );
 };
