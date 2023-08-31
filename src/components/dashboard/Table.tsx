@@ -26,14 +26,14 @@ export const TableRow: React.FC<TProps> = ({ children }) => {
 };
 
 export const TableHeader: React.FC<TProps> = ({ children }) => {
-  return <th className="py-2 font-semibold">{children}</th>;
+  return <th className="px-3 py-2 font-semibold text-center">{children}</th>;
 };
 
 export const TableCell: React.FC<TProps> = ({ children, className }) => {
   return (
     <td
       className={cn(
-        "text-center py-2 text-sm font-light text-neutral-500 border-b",
+        "text-start px-3 py-2 text-sm font-light text-neutral-500 border-b",
         className
       )}
     >
