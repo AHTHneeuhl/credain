@@ -1,4 +1,9 @@
-import { Payer, TransactionDate } from "components/transaction";
+import {
+  PayerAndPayee,
+  InvoiceAndDate,
+  Status,
+  AmountEquivalent,
+} from "components/transaction";
 import { transactions } from "config";
 import { useParams } from "react-router-dom";
 
@@ -11,11 +16,16 @@ const Transaction: React.FC = () => {
 
   return (
     <>
-      <TransactionDate transactionDate={transaction?.transactionDate!} />
-      <div>Transaction Invoice - {transaction?.invoiceNumber}</div>
-      <Payer payer={transaction?.payer!} />
-      <div>Payee - {transaction?.payee}</div>
-      <div>Amount - {transaction?.amount.toFixed(2)}</div>
+      <InvoiceAndDate
+        invoiceNumber={transaction?.invoiceNumber!}
+        transactionDate={transaction?.transactionDate!}
+      />
+      <PayerAndPayee payer={transaction?.payer!} payee={transaction?.payee!} />
+      <AmountEquivalent
+        amount={transaction?.amount!}
+        usdEquivalent={transaction?.usdEquivalent!}
+      />
+      <Status status={transaction?.status!} />
     </>
   );
 };
