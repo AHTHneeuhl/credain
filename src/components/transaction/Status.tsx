@@ -6,15 +6,19 @@ type TProps = {
 
 const Status: React.FC<TProps> = ({ status }) => {
   return (
-    <div className="flex flex-row items-center gap-6">
+    <div className="flex flex-row items-center justify-center gap-6">
       <Typography fontWeight="semibold" fontSize="md" className="text-teal-800">
-        Status
+        Transaction Status
       </Typography>
-      {status.map((status) => (
-        <Typography className="text-teal-700 bg-teal-50 px-2 py-1 rounded">
-          {status}
-        </Typography>
-      ))}
+      {status &&
+        status.map((status, index) => (
+          <Typography
+            key={index}
+            className="text-teal-700 bg-teal-50 px-2 py-1 rounded"
+          >
+            {status}
+          </Typography>
+        ))}
     </div>
   );
 };

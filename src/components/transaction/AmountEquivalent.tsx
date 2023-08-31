@@ -1,4 +1,6 @@
-import { Typography } from "components/common";
+import { Button, Typography } from "components/common";
+import { useEditAmount } from "hooks";
+import EditAmount from "./EditAmount";
 
 type TProps = {
   amount: number;
@@ -6,15 +8,17 @@ type TProps = {
 };
 
 const AmountEquivalent: React.FC<TProps> = ({ amount, usdEquivalent }) => {
+  const { onOpen } = useEditAmount();
+
   return (
-    <div className="flex flex-row items-center gap-6">
+    <div className="flex flex-row items-center justify-center gap-6">
       <div className="flex flex-col items-center justify-center bg-green-100 p-4 rounded">
         <Typography
           fontSize="md"
           fontWeight="semibold"
           className="text-teal-800"
         >
-          Amount
+          Total Paid Amount
         </Typography>
         <Typography
           fontSize="sm"
@@ -23,6 +27,8 @@ const AmountEquivalent: React.FC<TProps> = ({ amount, usdEquivalent }) => {
         >
           ₹ {amount}
         </Typography>
+        <Button label="Edit Amount" small onClick={onOpen} />
+        <EditAmount />
       </div>
       <div className="flex flex-col items-center justify-center bg-green-100 p-4 rounded">
         <Typography

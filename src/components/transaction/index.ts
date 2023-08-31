@@ -1,4 +1,3 @@
 export { default as InvoiceAndDate } from "./InvoiceAndDate";
-export { default as PayerAndPayee } from "./PayerAndPayee";
-export { default as AmountEquivalent } from "./AmountEquivalent";
+export { default as AmountPayeePayer } from "./AmountPayeePayer";
 export { default as Status } from "./Status";

@@ -1,18 +1,19 @@
-import { Typography } from "components/common";
+import { Button, Typography } from "components/common";
 import {
-  PayerAndPayee,
+  AmountPayeePayer,
   InvoiceAndDate,
   Status,
-  AmountEquivalent,
 } from "components/transaction";
-import { transactions } from "config";
 import { useParams } from "react-router-dom";
+import { useAppSelector } from "redux/store/hooks";
 
 const Transaction: React.FC = () => {
   const { id } = useParams();
 
-  const transaction = transactions.find(
-    (transaction) => transaction.id === parseInt(id!)
+  const transaction = useAppSelector((state) =>
+    state.transaction.transactions.find(
+      (transaction) => transaction.id === parseInt(id!)
+    )
   );
 
   return (
@@ -28,15 +29,20 @@ const Transaction: React.FC = () => {
           invoiceNumber={transaction?.invoiceNumber!}
           transactionDate={transaction?.transactionDate!}
         />
-        <PayerAndPayee
+        <AmountPayeePayer
           payer={transaction?.payer!}
           payee={transaction?.payee!}
-        />
-        <AmountEquivalent
           amount={transaction?.amount!}
-          usdEquivalent={transaction?.usdEquivalent!}
         />
         <Status status={transaction?.status!} />
+      </div>
+      <div className="flex items-center justify-center mt-8">
+        <Button
+          className="w-fit"
+          small
+          label="Back to Dashboard"
+          onClick={() => window.history.back()}
+        />
       </div>
     </>
   );

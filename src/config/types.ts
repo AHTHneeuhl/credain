@@ -3,7 +3,7 @@ export interface ICard {
   title: string;
   subtitle: string;
   value: string | number;
-  currency: "USD" | "INR";
+  currency?: "USD" | "INR";
 }
 
 export interface ITransaction {
@@ -13,6 +13,6 @@ export interface ITransaction {
   payer: string;
   payee: string;
   amount: number;
-  usdEquivalent: number;
+  usdEquivalent?: number;
   status: string[];
 }
