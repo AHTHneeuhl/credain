@@ -22,7 +22,7 @@ export const TableRow: React.FC<TProps> = ({ children }) => {
 };
 
 export const TableHeader: React.FC<TProps> = ({ children }) => {
-  return <th className="py-2">{children}</th>;
+  return <th className="py-2 font-semibold">{children}</th>;
 };
 
 export const TableCell: React.FC<TProps> = ({ children, className }) => {
