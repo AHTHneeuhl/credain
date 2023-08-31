@@ -33,9 +33,78 @@ export const transaction = createSlice({
         transactions: sortedTransactions,
       };
     },
+    updatePayerById: (
+      state,
+      action: PayloadAction<{ id: number; payer: string }>
+    ) => {
+      const { id, payer } = action.payload;
+      const updatedTransactions = state.transactions.map((transaction) => {
+        if (transaction.id === id) {
+          return {
+            ...transaction,
+            payer,
+          };
+        }
+
+        return transaction;
+      });
+
+      return {
+        ...state,
+        transactions: updatedTransactions,
+      };
+    },
+    updatePayeeById: (
+      state,
+      action: PayloadAction<{ id: number; payee: string }>
+    ) => {
+      const { id, payee } = action.payload;
+      const updatedTransactions = state.transactions.map((transaction) => {
+        if (transaction.id === id) {
+          return {
+            ...transaction,
+            payee,
+          };
+        }
+
+        return transaction;
+      });
+
+      return {
+        ...state,
+        transactions: updatedTransactions,
+      };
+    },
+    updateAmountById: (
+      state,
+      action: PayloadAction<{ id: number; amount: number }>
+    ) => {
+      const { id, amount } = action.payload;
+      const updatedTransactions = state.transactions.map((transaction) => {
+        if (transaction.id === id) {
+          return {
+            ...transaction,
+            amount,
+          };
+        }
+
+        return transaction;
+      });
+
+      return {
+        ...state,
+        transactions: updatedTransactions,
+      };
+    },
   },
 });
 
-export const { setTransactions, sortTransactions } = transaction.actions;
+export const {
+  setTransactions,
+  sortTransactions,
+  updatePayerById,
+  updateAmountById,
+  updatePayeeById,
+} = transaction.actions;
 
 export default transaction.reducer;

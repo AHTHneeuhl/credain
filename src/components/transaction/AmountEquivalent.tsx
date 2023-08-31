@@ -7,7 +7,7 @@ type TProps = {
 
 const AmountEquivalent: React.FC<TProps> = ({ amount, usdEquivalent }) => {
   return (
-    <div className="flex flex-row items-center gap-6 p-4">
+    <div className="flex flex-row items-center gap-6">
       <div className="flex flex-col items-center justify-center bg-green-100 p-4 rounded">
         <Typography
           fontSize="md"
