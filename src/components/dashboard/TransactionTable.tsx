@@ -1,6 +1,9 @@
-import { PiDotsThreeCircleVertical } from "react-icons/pi";
+import { Typography } from "components/common";
 import { BsArrowDownUp } from "react-icons/bs";
-import { transactions } from "config";
+import { PiDotsThreeCircleVertical } from "react-icons/pi";
+import { Link } from "react-router-dom";
+import { sortTransactions } from "redux/slices";
+import { useAppDispatch, useAppSelector } from "redux/store/hooks";
 import {
   Table,
   TableBody,
@@ -9,12 +12,13 @@ import {
   TableHeader,
   TableRow,
 } from "./Table";
-import { Link } from "react-router-dom";
-import { Typography } from "components/common";
 
 const TransactionTable: React.FC = () => {
-  const handleSortStrings = () => {};
-  const handleSortNumbers = () => {};
+  const dispatch = useAppDispatch();
+
+  const transactions = useAppSelector(
+    (state) => state.transaction.transactions
+  );
 
   return (
     <Table className="my-12">
@@ -22,39 +26,53 @@ const TransactionTable: React.FC = () => {
         <TableRow>
           <TableHeader>
             <div className="flex flex-row items-center gap-2">
-              Transaction Date <BsArrowDownUp onClick={handleSortNumbers} />
+              Transaction Date{" "}
+              <BsArrowDownUp
+                onClick={() => dispatch(sortTransactions("transactionDate"))}
+              />
             </div>
           </TableHeader>
           <TableHeader>
             <div className="flex flex-row items-center gap-2">
-              Invoice No. <BsArrowDownUp onClick={handleSortStrings} />
+              Invoice No.{" "}
+              <BsArrowDownUp
+                onClick={() => dispatch(sortTransactions("invoiceNumber"))}
+              />
             </div>
           </TableHeader>
           <TableHeader>
             <div className="flex flex-row items-center gap-2">
-              Payer <BsArrowDownUp />
+              Payer{" "}
+              <BsArrowDownUp
+                onClick={() => dispatch(sortTransactions("payer"))}
+              />
             </div>
           </TableHeader>
           <TableHeader>
             <div className="flex flex-row items-center gap-2">
-              Payee <BsArrowDownUp />
+              Payee{" "}
+              <BsArrowDownUp
+                onClick={() => dispatch(sortTransactions("payee"))}
+              />
             </div>
           </TableHeader>
           <TableHeader>
             <div className="flex flex-row items-center gap-2">
-              Amount <BsArrowDownUp />
+              Amount{" "}
+              <BsArrowDownUp
+                onClick={() => dispatch(sortTransactions("amount"))}
+              />
             </div>
           </TableHeader>
           <TableHeader>
             <div className="flex flex-row items-center gap-2">
-              USD Equivalent <BsArrowDownUp />
+              USD Equivalent{" "}
+              <BsArrowDownUp
+                onClick={() => dispatch(sortTransactions("usdEquivalent"))}
+              />
             </div>
           </TableHeader>
-          <TableHeader>
-            <div className="flex flex-row items-center gap-2">
-              Status <BsArrowDownUp />
-            </div>
-          </TableHeader>
+          <TableHeader>Status</TableHeader>
           <TableHeader>Actions</TableHeader>
         </TableRow>
       </TableHead>
