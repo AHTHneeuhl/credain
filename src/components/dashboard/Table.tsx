@@ -5,8 +5,12 @@ type TProps = {
   className?: string;
 };
 
-export const Table: React.FC<TProps> = ({ children }) => {
-  return <table className="w-full shadow-sm rounded-xl">{children}</table>;
+export const Table: React.FC<TProps> = ({ children, className }) => {
+  return (
+    <table className={cn("w-full shadow-sm rounded-xl", className)}>
+      {children}
+    </table>
+  );
 };
 
 export const TableHead: React.FC<TProps> = ({ children }) => {
@@ -18,7 +22,7 @@ export const TableBody: React.FC<TProps> = ({ children }) => {
 };
 
 export const TableRow: React.FC<TProps> = ({ children }) => {
-  return <tr>{children}</tr>;
+  return <tr className="cursor-pointer">{children}</tr>;
 };
 
 export const TableHeader: React.FC<TProps> = ({ children }) => {
@@ -29,7 +33,7 @@ export const TableCell: React.FC<TProps> = ({ children, className }) => {
   return (
     <td
       className={cn(
-        "text-center py-2 text-sm font-light text-neutral-500",
+        "text-center py-2 text-sm font-light text-neutral-500 border-b",
         className
       )}
     >

@@ -8,10 +8,11 @@ import {
   TableRow,
 } from "./Table";
 import { Link } from "react-router-dom";
+import { Typography } from "components/common";
 
 const TransactionTable: React.FC = () => {
   return (
-    <Table>
+    <Table className="my-12">
       <TableHead>
         <TableRow>
           <TableHeader>Transaction Date</TableHeader>
@@ -38,16 +39,20 @@ const TransactionTable: React.FC = () => {
           }) => (
             <TableRow key={id}>
               <TableCell>{transactionDate}</TableCell>
-              <Link to={`/transaction/${id}`}>
-                <TableCell className="text-blue-700 underline cursor-pointer">
-                  {invoiceNumber}
-                </TableCell>
-              </Link>
+              <TableCell className="text-blue-700 underline">
+                <Link to={`/transaction/${id}`}>{invoiceNumber}</Link>
+              </TableCell>
               <TableCell>{payer}</TableCell>
               <TableCell>{payee}</TableCell>
               <TableCell>₹ {amount.toFixed(2)}</TableCell>
               <TableCell>$ {usdEquivalent.toFixed(2)}</TableCell>
-              <TableCell className="text-neutral-800">{status}</TableCell>
+              <TableCell className="text-neutral-800 justify-start flex gap-1">
+                {status.map((status, index) => (
+                  <Typography key={index} className="bg-blue-100 rounded px-1">
+                    {status}
+                  </Typography>
+                ))}
+              </TableCell>
               <TableCell>action</TableCell>
             </TableRow>
           )

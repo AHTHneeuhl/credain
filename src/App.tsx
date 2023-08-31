@@ -1,13 +1,25 @@
+import { Layout } from "layouts";
 import { Dashboard, Transaction } from "pages";
-import { Route, Routes } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/transaction/:id" element={<Transaction />} />
-    </Routes>
-  );
+  const router = createBrowserRouter([
+    {
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Dashboard />,
+        },
+        {
+          path: "transaction/:id",
+          element: <Transaction />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
