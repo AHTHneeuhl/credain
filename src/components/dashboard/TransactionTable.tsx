@@ -1,4 +1,5 @@
 import { Typography } from "components/common";
+import { inrToUsd } from "helpers/inrToUsd";
 import { BsArrowDownUp } from "react-icons/bs";
 import { PiDotsThreeCircleVertical } from "react-icons/pi";
 import { Link } from "react-router-dom";
@@ -96,7 +97,7 @@ const TransactionTable: React.FC = () => {
               <TableCell>{payer}</TableCell>
               <TableCell>{payee}</TableCell>
               <TableCell>₹ {amount.toFixed(2)}</TableCell>
-              <TableCell>$ {usdEquivalent.toFixed(2)}</TableCell>
+              <TableCell>$ {inrToUsd(amount).toFixed(2)}</TableCell>
               <TableCell className="text-neutral-800 justify-start flex gap-1 py-3">
                 {status.map((status, index) => (
                   <Typography key={index} className="bg-blue-100 rounded px-1">

@@ -1,6 +1,5 @@
 import { Button } from "components/common";
-import { useModal } from "hooks";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 type TProps = {
@@ -16,6 +15,7 @@ type TProps = {
   onSubmit: () => void;
 };
 const Modal: React.FC<TProps> = ({
+  isOpen,
   title,
   body,
   footer,
@@ -23,10 +23,17 @@ const Modal: React.FC<TProps> = ({
   disabled,
   secondaryAction,
   secondaryActionLabel,
-
+  onClose,
   onSubmit,
 }) => {
-  const { isOpen, onClose } = useModal();
+  const [showModal, setShowModal] = useState(isOpen);
+
+  const handleClose = useCallback(() => {
+    if (disabled) return;
+
+    setShowModal(false);
+    onClose();
+  }, [disabled, onClose]);
 
   const handleSubmit = useCallback(() => {
     if (disabled) return;
@@ -40,6 +47,10 @@ const Modal: React.FC<TProps> = ({
     secondaryAction();
   }, [disabled, secondaryAction]);
 
+  useEffect(() => {
+    setShowModal(isOpen);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -48,7 +59,7 @@ const Modal: React.FC<TProps> = ({
         <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full lg:h-auto md:h-auto">
           <div
             className={`translate duration-300 h-full ${
-              isOpen
+              showModal
                 ? "translate-y-0 opacity-100"
                 : "translate-y-full opacity-0"
             }`}
@@ -56,7 +67,7 @@ const Modal: React.FC<TProps> = ({
             <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadaw-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               <div className="flex items-center p-6 rounded-t justify-center relative border-b">
                 <button
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="p-1 border-0 hover:opacity-70 transition absolute left-9"
                 >
                   <IoMdClose size={18} />

@@ -1,3 +1,4 @@
+import { cn } from "helpers/utils";
 import { IconType } from "react-icons";
 
 type TProps = {
@@ -6,6 +7,7 @@ type TProps = {
   outline?: boolean;
   small?: boolean;
   icon?: IconType;
+  className?: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 const Button: React.FC<TProps> = ({
@@ -14,19 +16,23 @@ const Button: React.FC<TProps> = ({
   outline,
   small,
   icon: Icon,
+  className,
   onClick,
 }) => {
   return (
     <button
-      className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full ${
-        outline
-          ? "bg-white border-black text-black"
-          : "bg-rose-500 border-rose-500 text-white"
-      } ${
-        small
-          ? "py-1 text-sm border font-light"
-          : "py-3 text-md border-2 font-semibold"
-      }`}
+      className={cn(
+        `relative disabled:opacity-70 disabled:cursor-not-allowed px-2 font-semibold rounded hover:opacity-80 transition w-full ${
+          outline
+            ? "bg-white border-black text-black"
+            : "bg-rose-500 border-rose-500 text-white"
+        } ${
+          small
+            ? "py-1 px-2 text-sm border font-light"
+            : "py-3 px-4 text-md border-2 font-semibold"
+        }`,
+        className
+      )}
       disabled={disabled}
       onClick={onClick}
     >

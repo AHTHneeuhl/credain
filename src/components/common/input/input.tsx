@@ -1,9 +1,9 @@
-import { forwardRef, HTMLAttributes } from "react";
+import { ChangeEvent, forwardRef, HTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "helpers/utils";
 
 const inputVariants = cva(
-  "border-2 border-teal-500 px-2 text-sm h-10 rounded focus:outline-none focus:border-blue-700",
+  "border-2 border-teal-500 w-full px-2 text-sm h-10 rounded focus:outline-none focus:border-blue-700",
   {
     variants: {
       variant: {
@@ -19,7 +19,10 @@ const inputVariants = cva(
 
 interface InputProps
   extends HTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputVariants> {}
+    VariantProps<typeof inputVariants> {
+  value?: string | number;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+}
 
 const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   ({ className, variant, ...props }, ref) => {

@@ -20,9 +20,15 @@ const Card: React.FC<TProps> = ({ title, subtitle, value, currency }) => {
         >
           {value}
         </Typography>
-        <Typography fontSize="sm" fontWeight="medium" className="text-teal-700">
-          {currency}
-        </Typography>
+        {currency && (
+          <Typography
+            fontSize="sm"
+            fontWeight="medium"
+            className="text-teal-700"
+          >
+            {currency}
+          </Typography>
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ const transactions = [
     payer: "John",
     payee: "Jane",
     amount: 235000.0,
-    usdEquivalent: 12200.0,
     status: ["first", "second", "third"],
   },
   {
@@ -16,8 +15,7 @@ const transactions = [
     payer: "Alice",
     payee: "Bob",
     amount: 17500.0,
-    usdEquivalent: 890.0,
-    status: ["second", "third"],
+    status: ["first", "second"],
   },
   {
     id: 103,
@@ -26,7 +24,6 @@ const transactions = [
     payer: "Mary",
     payee: "David",
     amount: 45000.0,
-    usdEquivalent: 2150.0,
     status: ["first"],
   },
   {
@@ -36,8 +33,7 @@ const transactions = [
     payer: "Eva",
     payee: "Sam",
     amount: 80000.0,
-    usdEquivalent: 4000.0,
-    status: ["first", "third"],
+    status: ["first", "second"],
   },
   {
     id: 105,
@@ -46,8 +42,7 @@ const transactions = [
     payer: "Alex",
     payee: "Olivia",
     amount: 32000.0,
-    usdEquivalent: 1520.0,
-    status: ["second"],
+    status: ["first"],
   },
   {
     id: 106,
@@ -56,7 +51,6 @@ const transactions = [
     payer: "Grace",
     payee: "Daniel",
     amount: 9800.0,
-    usdEquivalent: 510.0,
     status: ["first", "second"],
   },
   {
@@ -66,8 +60,7 @@ const transactions = [
     payer: "Michael",
     payee: "Sophia",
     amount: 62000.0,
-    usdEquivalent: 3150.0,
-    status: ["third"],
+    status: ["first", "second", "third"],
   },
 ];
 
